@@ -1,0 +1,8 @@
+#!/bin/sh
+
+#./haproxy/haproxy -f ./haproxy.cfg -p pid.txt
+./haproxy -f ./haproxy.cfg -p pid.txt
+
+
+echo $! > solr.pid
+

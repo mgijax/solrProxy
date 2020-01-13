@@ -1,0 +1,26 @@
+#HA Proxy Config
+global
+ daemon
+ maxconn 256
+
+defaults
+ mode http
+ timeout connect 5000ms
+ timeout client 50000ms
+ timeout server 50000ms
+
+listen stats
+ bind *:9992	
+ stats enable
+ stats hide-version
+ stats uri /stats
+ stats auth admin:admin@123
+
+frontend myApp
+ bind *:14999
+ acl acl_myApp path_sub solr
+ use_backend myAppBackEnd if acl_myApp
+
+backend myAppBackEnd
+ balance roundrobin
+ server mySolrServer1 bhmgigxdsolr01lt.jax.org:9995 check

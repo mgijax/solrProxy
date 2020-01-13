@@ -1,0 +1,13 @@
+#!/bin/sh
+
+PID=`cat pid.txt | awk '{print $1}'`
+
+#./haproxy/haproxy -st ${PID}
+kill -9 ${PID}
+
+
+if [ -f pid.txt ]; then
+	rm pid.txt
+fi
+
+echo ${MSG}
