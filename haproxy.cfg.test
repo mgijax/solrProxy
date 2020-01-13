@@ -17,7 +17,7 @@ listen stats
  stats auth admin:admin@123
 
 frontend myApp
- bind *:14999
+ bind *:9992
  acl acl_myApp path_sub solr
  use_backend myAppBackEnd if acl_myApp
 
