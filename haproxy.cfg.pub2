@@ -10,14 +10,14 @@ defaults
  timeout server 50000ms
 
 listen stats
- bind *:9992	
+ bind *:9993
  stats enable
  stats hide-version
  stats uri /stats
  stats auth admin:admin@123
 
 frontend myApp
- bind *:14999
+ bind *:9992
  acl acl_myApp path_sub solr
  use_backend myAppBackEnd if acl_myApp
 
