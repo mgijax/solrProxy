@@ -1,0 +1,10 @@
+TAG: solrProxy-6-0-24-?
+DATE: 12/04/2024
+STAFF: lec
+CHANGES:
+wts2-1487/e4g-8y/Install: fixes for MGI_Install
+#        new file:   Configuration.default
+#        new file:   HISTORY
+#        new file:   Install
+#	 new file:   Install.prodtesting
+

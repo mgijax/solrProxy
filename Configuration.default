@@ -1,0 +1,9 @@
+#!/bin/sh
+
+if [ "${MGICONFIG}" = "" ]
+then
+    MGICONFIG=/usr/local/mgi/live/mgiconfig
+    export MGICONFIG
+    source ${MGICONFIG}/master.config.sh
+fi
+

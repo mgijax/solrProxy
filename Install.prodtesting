@@ -1,0 +1,32 @@
+#!/bin/sh
+
+source ./Configuration
+
+rm -rf haproxy.cfg
+
+# generate the appropriate haproxy.cfg
+#if [ "`uname -n | cut -d'.' -f1`" == "bhmgipub01lt" ] 
+#then
+#	ln -s haproxy.cfg.test haproxy.cfg
+if [ "`uname -n | cut -d'.' -f1`" == "bhmgipub01lt" ] 
+then
+	ACTIVE_PUB=/usr/local/mgi/jenkins_admin/bin/getActivePublic
+	echo 'ACTIVE_PUB', $ACTIVE_PUB
+	export ACTIVE_PUB
+	if [ "${ACTIVE_PUB}" == "pub1" ]
+	then
+		echo 'if', $ACTIVE_PUB
+		ln -s haproxy.cfg.pub1 haproxy.cfg
+	else
+		echo 'else', $ACTIVE_PUB
+		ln -s haproxy.cfg.pub2 haproxy.cfg
+	fi
+
+#else 
+#	do this manually and chosse the proper haproxy.cfg
+
+fi
+
+# start the proxy
+./startProxy
+
