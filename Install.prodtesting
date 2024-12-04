@@ -5,10 +5,7 @@ source ./Configuration
 rm -rf haproxy.cfg
 
 # generate the appropriate haproxy.cfg
-#if [ "`uname -n | cut -d'.' -f1`" == "bhmgipub01lt" ] 
-#then
-#	ln -s haproxy.cfg.test haproxy.cfg
-if [ "`uname -n | cut -d'.' -f1`" == "bhmgipub01lt" ] 
+if [ "`uname -n | cut -d'.' -f1`" == "bhmgipubweb01lp"  -o "`uname -n | cut -d'.' -f1`" == "bhmgipubweb02lp" ] 
 then
 	ACTIVE_PUB=/usr/local/mgi/jenkins_admin/bin/getActivePublic
 	echo 'ACTIVE_PUB', $ACTIVE_PUB
