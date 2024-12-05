@@ -8,20 +8,12 @@ rm -rf haproxy.cfg
 if [ "`uname -n | cut -d'.' -f1`" == "bhmgiweb01lt" ] 
 then
 	ln -s haproxy.cfg.test haproxy.cfg
-elif [ "`uname -n | cut -d'.' -f1`" == "bhmgipubweb01lp"  -o "`uname -n | cut -d'.' -f1`" == "bhmgipubweb02lp" ] 
+elif [ "`uname -n | cut -d'.' -f1`" == "bhmgipubweb01lp" ]
 then
-	ACTIVE_PUB=/usr/local/mgi/jenkins_admin/bin/getActivePublic
-	echo 'ACTIVE_PUB', $ACTIVE_PUB
-	export ACTIVE_PUB
-	if [ "${ACTIVE_PUB}" == "pub1" ]
-	then
-		echo 'if', $ACTIVE_PUB
-		ln -s haproxy.cfg.pub1 haproxy.cfg
-	else
-		echo 'else', $ACTIVE_PUB
-		ln -s haproxy.cfg.pub2 haproxy.cfg
-	fi
-
+	ln -s haproxy.cfg.pub1 haproxy.cfg
+elif [ "`uname -n | cut -d'.' -f1`" == "bhmgipubweb02lp" ] 
+then
+	ln -s haproxy.cfg.pub2 haproxy.cfg
 #else 
 #	do this manually and chosse the proper haproxy.cfg
 
